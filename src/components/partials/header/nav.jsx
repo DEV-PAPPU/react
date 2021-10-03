@@ -24,7 +24,7 @@ export default class nav extends Component {
         }else(
             profile=(
                 <Link  className="bg-indigo-700 hover:bg-indigo-500 text-white ml-4 py-2 px-3 rounded-lg" to={"/login"}>
-                            Login
+                    Login
                 </Link>
             )
         )
