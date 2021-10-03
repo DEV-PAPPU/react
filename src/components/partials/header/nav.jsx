@@ -59,7 +59,7 @@ export default class nav extends Component {
                     </nav>
                 
                     
-                    <div className="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+                    <div className="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0 sm:pt-3">
                       {profile}
                     </div>
                 </div>
