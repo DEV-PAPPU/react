@@ -11,6 +11,7 @@ import ProductSingle from "../../pages/products/single";
 import Login from "../../auth/login";
 import axios from 'axios';
 import Profile from "../../pages/profile/profile";
+import Crud from "../../pages/crud/index";
 export default class header extends Component {
 
     state={
@@ -40,7 +41,7 @@ export default class header extends Component {
       return (
        
         <Router>
-           <Nav user={this.state.user}/>
+           <Nav user={this.state.user} setUser={this.setUser}/>
             <div>
                 <Switch>
                     <Route exact path='/' component={ ()=><Home user={this.state.user}/> }/>
@@ -51,6 +52,7 @@ export default class header extends Component {
                     <Route exact path='/create' component={Create} />
                     <Route exact path='/login' component={()=><Login setUser={this.setUser}/>}/>
                     <Route exact path='/profile' component={()=><Profile user={this.state.user}/>}/>
+                    <Route exact path='/crud' component={Crud}/>
                 </Switch>
             </div>
      </Router>

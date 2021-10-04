@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {Redirect} from "react-router-dom";
+
 import axios from 'axios';
 
 class Login extends Component {
@@ -14,6 +16,7 @@ class Login extends Component {
          }
      }
 
+     
      handleChange = (e) => {
 
         this.setState({
@@ -21,9 +24,15 @@ class Login extends Component {
         })
      }
 
+
+    //  redirectToHome = () => {
+    //     const { history } = this.props;
+    //     if(history) history.push('/');
+    //    }
+
       onSubmit = (e) => {
         e.preventDefault();
-
+        
         // const {form} = this.state.form
 
         const data = new FormData()
@@ -38,6 +47,11 @@ class Login extends Component {
           
             this.props.setUser(user);
             
+            if(token){
+
+               return <Redirect to={"/"}/>
+            }
+
             console.log(user);
 
         })
@@ -59,6 +73,11 @@ class Login extends Component {
 
     render() {
 
+        //Checking auth if auth then redirect home page
+        if(localStorage.getItem('token')){
+            return  <Redirect to={"/profile"}/>
+        }
+
         return (
 
             <div className="flex justify-center">
@@ -77,7 +96,7 @@ class Login extends Component {
                         </div>
 
                         <div className="mb-6">
-                            <label className="block text-gray-800 font-bold">Email</label>
+                            <label className="block text-gray-800 font-bold">Password</label>
                             <input type="password" name="password" id="email" placeholder="password" className="w-full border border-gray-300 py-2 pl-3 rounded mt-2 outline-none focus:ring-indigo-600 :ring-indigo-600"
                             onChange={this.handleChange} 
                             value={this.state.password}
@@ -85,10 +104,10 @@ class Login extends Component {
                         </div>
 
                         
-                        <button type="submit" className="cursor-pointer py-2 px-4  mt-5 bg-indigo-500 text-white font-bold rounded">Submit</button>
+                        <button type="submit" className="cursor-pointer py-2 px-4  mt-5 bg-indigo-500 text-white font-bold rounded">Login Now</button>
                     </form>
                 </div>
-        </div>
+            </div>
 
         );
     }

@@ -14,7 +14,6 @@ class Products extends Component {
 
    componentDidMount(){
 
-    // /storage/file.extension/
     axios.get(`shop`)
      .then(res => {
          this.setState({products: res.data});
@@ -40,21 +39,20 @@ class Products extends Component {
 
              {this.state.products.map( product =>
              
-                 <div id={product.id} key={product.id }>
-
-                      <div className="card flex items-center  mb-3 shadow-lg bg-white rounded-lg">
-                          <div>
-                                <Link to={`product/${product.slug}`}>
-                                <img src={this.state.url+product.image} className="Products-image mb-3 rounded-sm" alt={product.slug}/>
-                                </Link>
-                                
-                                <div className="px-7 pb-8">
-                                <h4 className="card-title ml-1 py-5">{product.title}</h4>
-                                    <Link to={`product/${product.slug}`} className="mt-5 w-full bg-indigo-700  text-center text-white py-2 px-12 rounded-lg">View Products</Link>
-                                </div>
-                          </div>
-                      </div>
-                  </div>
+                <div id={product.id} key={product.id }>
+                    <div className="card flex items-center  mb-3 shadow-lg bg-white rounded-lg">
+                        <div>
+                            <Link to={`product/${product.slug}`}>
+                            <img src={this.state.url+product.image} className="Products-image mb-3 rounded-sm" alt={product.slug}/>
+                            </Link>
+                            
+                            <div className="px-7 pb-8">
+                            <h4 className="card-title ml-1 py-5">{product.title}</h4>
+                                <Link to={`product/${product.slug}`} className="mt-5 w-full bg-indigo-700  text-center text-white py-2 px-12 rounded-lg">View Products</Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
              )}
 
          </div>

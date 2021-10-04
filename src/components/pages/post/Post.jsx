@@ -10,6 +10,7 @@ class Post extends Component {
 
      posts:[],
      loading: true,
+     url:'http://react.test'
   }
 
    componentDidMount(){
@@ -35,18 +36,22 @@ class Post extends Component {
      }
 
      return (
-         <div className="Post-component container px-20 py-10 grid grid-cols-3 gap-6">
+         <div className="Products-component container mt-5 px-20 py-10 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-6 pt-10">
 
              {this.state.posts.map( post =>
-             
+
                  <div id={post.id} key={post.id }>
 
-                      <div className="card flex items-center  mb-3 shadow-lg bg-white  px-10 py-8">
+                      <div className="card flex items-center  mb-3 shadow-lg bg-white rounded-lg">
                           <div>
-                            <h4 className="card-title">{post.title}</h4>
-                            <img src={post.image} className="post-image m-8" alt="BigCo Inc. logo"/>
-                            
-                            <Link to={`posts/${post.id}`} className="mt-5 bg-indigo-700  text-white ml-4 py-2 px-3 rounded-lg">View Post</Link>
+
+                          <img src={this.state.url+post.image} className="Products-image mb-3 rounded-sm" alt="BigCo Inc. logo"/>
+                                                       
+                            <div className="px-7 pb-8">
+                            <h4 className="card-title ml-1 py-5">{post.title}</h4>
+                                <Link to={`posts/${post.id}`} className="mt-5 w-full bg-indigo-700  text-center text-white py-2 px-12 rounded-lg">View Post</Link>
+                            </div>
+                           
                           </div>
                       </div>
 

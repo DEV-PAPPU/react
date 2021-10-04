@@ -7,7 +7,7 @@ import axios from 'axios';
 const Single = () => {
 
     let {id} = useParams();
-
+    const url = 'http://react.test'
     const [loading, setLoading] = useState(true);
     const [post, setPost] = useState([]);
 
@@ -38,7 +38,7 @@ const Single = () => {
                  <div className="card border-primary mb-3 flex items-center px-5 py-8">
                       <di>
                           <h4 className="card-title">Title: {post.title}</h4>
-                          <img src={post.image} className="post-image m-8" alt="BigCo Inc. logo"/>
+                          <img src={url+post.image} className="post-image m-8 px-60" alt="BigCo Inc. logo"/>
                           
                           <p className="text-black">{post.description}</p>
                       </di>
