@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import "./styles/tailwind.css";
 import './App.css';
-
 import Header from "./components/partials/header/Header";
+
 
 //Important
 import axios from 'axios';
@@ -13,7 +13,11 @@ class App extends Component {
 
   render() {
     return (
-      <Header/>
+      <Header />
+    //   <Provider store={store}>
+    //     <Header />
+    //  </Provider>
+
     );
   }
 }

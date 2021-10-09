@@ -7,17 +7,16 @@ import axios from 'axios';
 const Single = () => {
 
     let {id} = useParams();
-    const url = 'http://react.test'
     const [loading, setLoading] = useState(true);
     const [post, setPost] = useState([]);
 
         useEffect(() => {
 
-            axios.get(`http://react.test/api/post/show/${id}`).then(res=>{
+            axios.get(`https://fakestoreapi.com/products/${id}`).then(res=>{
                 if(res.status === 200)
                 {
-                    console.log("single post ----" , res.data)
-                    setPost(res.data);
+                    const newdata = Array(res.data)
+                    setPost(newdata);
                     // console.log(res.data);
                     setLoading(false);
                 }
@@ -40,7 +39,7 @@ const Single = () => {
                  <div className="card border-primary mb-3 flex items-center px-5 py-8">
                       <di>
                           <h4 className="card-title">Title: {post.title}</h4>
-                          <img src={url+post.image} className="post-image m-8 px-60" alt="BigCo Inc. logo"/>
+                          <img src={post.image} className="post-image m-8 px-60" alt="BigCo Inc. logo"/>
                           
                           <p className="text-black">{post.description}</p>
                       </di>

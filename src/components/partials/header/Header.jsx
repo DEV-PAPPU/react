@@ -6,12 +6,15 @@ import Home from "../../pages/home";
 import Post from "../../pages/post/Post";
 import Create from "../../pages/post/create/Create";
 import Single from "./../../pages/post/single/single";
-import Products from "../../pages/products/product";
-import ProductSingle from "../../pages/products/single";
+import Products from "../../pages/products/shop/Product";
+import ProductSingle from "../../pages/products/single/Single";
 import Login from "../../auth/login";
 import axios from 'axios';
 import Profile from "../../pages/profile/profile";
 import Crud from "../../pages/crud/index";
+import ReduxComponent from "../../pages/redux/Redux";
+import Apishop from "../../pages/apishop/product";
+import Apishopsingle from "../../pages/apishop/single";
 export default class header extends Component {
 
     state={
@@ -53,6 +56,9 @@ export default class header extends Component {
                     <Route exact path='/login' component={()=><Login setUser={this.setUser}/>}/>
                     <Route exact path='/profile' component={()=><Profile user={this.state.user}/>}/>
                     <Route exact path='/crud' component={Crud}/>
+                    <Route exact path='/redux' component={ReduxComponent}/>
+                    <Route exact path='/fakestore' component={Apishop}/>
+                    <Route exact path='/fakestore/:id' component={Apishopsingle}/>
                 </Switch>
             </div>
      </Router>

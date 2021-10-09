@@ -59,10 +59,15 @@ export default class nav extends Component {
                         <Link
                             className="mr-5 cursor-pointer border-b border-transparent hover:border-indigo-600" to={"/products"}>Products</Link>
                     
+                        <Link className="mr-5 cursor-pointer border-b border-transparent hover:border-indigo-600" to={"/redux"}>
+                           Redux</Link>
+
                         <Link className="mr-5 cursor-pointer border-b border-transparent hover:border-indigo-600" to={"/crud"}>
                             Crud</Link>
                         <Link className="mr-5 cursor-pointer border-b border-transparent hover:border-indigo-600" to={"/create"}>
                             Create</Link>
+                        <Link className="mr-5 cursor-pointer border-b border-transparent hover:border-indigo-600" to={"/fakestore"}>
+                        Fakestore</Link>
 
                     </nav>
                 

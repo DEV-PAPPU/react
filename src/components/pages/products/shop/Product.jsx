@@ -1,3 +1,4 @@
+import './Product.css';
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 
@@ -5,15 +6,13 @@ import axios from 'axios';
 
 class Products extends Component {
 
-  state = {
-
+    state = {
      products:[],
      loading: true,
      url: 'http://ecommerce.test'
   }
 
    componentDidMount(){
-
     axios.get(`shop`)
      .then(res => {
          this.setState({products: res.data});
