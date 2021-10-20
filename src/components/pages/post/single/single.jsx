@@ -23,7 +23,7 @@ const Single = () => {
                 }
             });
 
-        }, []);
+        }, [id]);
 
 
     if(loading)
@@ -38,12 +38,12 @@ const Single = () => {
              {post.map( post =>
                  <tr id={post.id} key={post.id }>
                  <div className="card border-primary mb-3 flex items-center px-5 py-8">
-                      <di>
+                      <div>
                           <h4 className="card-title">Title: {post.title}</h4>
                           <img src={url+post.image} className="post-image m-8 px-60" alt="BigCo Inc. logo"/>
                           
                           <p className="text-black">{post.description}</p>
-                      </di>
+                      </div>
                   </div>
                  </tr>
              )}

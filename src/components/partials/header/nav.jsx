@@ -14,7 +14,6 @@ export default class nav extends Component {
 
         let profile;
         const auth = localStorage.getItem('token')
-
        
         if(auth){
             profile=(
@@ -68,6 +67,9 @@ export default class nav extends Component {
                             Create</Link>
                         <Link className="mr-5 cursor-pointer border-b border-transparent hover:border-indigo-600" to={"/fakestore"}>
                         Fakestore</Link>
+
+                        <Link className="mr-5 cursor-pointer border-b border-transparent hover:border-indigo-600" to={"/cart"}>
+                        Cart</Link>
 
                     </nav>
                 

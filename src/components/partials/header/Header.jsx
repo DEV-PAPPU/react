@@ -15,12 +15,13 @@ import Crud from "../../pages/crud/index";
 import ReduxComponent from "../../pages/redux/Redux";
 import Apishop from "../../pages/apishop/product";
 import Apishopsingle from "../../pages/apishop/single";
+import Test from "../../Test";
+import Cart from './../../pages/Ecommerce/Cart/Cart'
 export default class header extends Component {
 
     state={
       user:{}
     }
-
     componentDidMount(){
 
        axios.get(`auth/user`,{
@@ -30,10 +31,11 @@ export default class header extends Component {
     }).then(res =>{
       
        const user = res.data
-       this.setUser(user)
-
+      //  const token = res.data.access_token
+       this.setUser(user);
+      //  localStorage.removeItem('token');
+      //  localStorage.setItem('token',token);
        })
-
     }
 
     setUser = (user) =>{
@@ -59,6 +61,8 @@ export default class header extends Component {
                     <Route exact path='/redux' component={ReduxComponent}/>
                     <Route exact path='/fakestore' component={Apishop}/>
                     <Route exact path='/fakestore/:id' component={Apishopsingle}/>
+                    <Route exact path='/cart' component={Cart}/>
+                    <Route exact path='/test' component={Test}/>
                 </Switch>
             </div>
      </Router>

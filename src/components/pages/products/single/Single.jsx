@@ -1,55 +1,35 @@
 import React, {useState, useEffect} from 'react';
 import './Single.css';
-import Swal from 'sweetalert2';
 import { useParams} from "react-router-dom";
-
 import axios from 'axios';
-import {SET_PRODUCT} from "../../../../actions/index"
-import {useSelector, useDispatch } from 'react-redux';
+// import {SET_PRODUCT} from "../../../../actions/index"
+import {ADD_TO_CART} from "../../../../actions/CartAction"
+import {useDispatch } from 'react-redux';
+import Fade from 'react-reveal/Zoom';
+
+import ImageZoom from "react-image-zooom";
 
 const Single = () => {
 
     let {slug} = useParams();
     const dispatch = useDispatch();
     const url = 'http://ecommerce.test';
-    const single_data = useSelector((state) => state.PRODUCTSINGLE);
-
 
     const [loading, setLoading] = useState(true);
 
     const [product, setProduct] = useState([]);
-
-    const addtocart = (id) =>{
-
-        axios.post(`addtocart/${id}`).then(res =>{
-
-            console.log(res)
-            Swal.fire({
-                icon: 'success',
-                title: 'Product added'
-              })
-
-        })
-    }
-
-
 
         useEffect(() => {
 
             axios.get(`product-single/${slug}`).then(res=>{
                 if(res.status === 200)
                 {
-                    const product = Array(res.data)
-                    setProduct(product);
+                    setProduct(res.data);
                     setLoading(false);
-                                     
-                    dispatch(SET_PRODUCT(product));
                 }
             });
 
-        }, []);
-
-
+        }, [slug]);
 
 
         if(loading)
@@ -58,33 +38,36 @@ const Single = () => {
         }
 
     return (
-
+        <Fade bottom>
         <div className="product-component container px-20 py-10">
-            
-            {product.map( product =>
-                 <tr id={product.id} key={product.id }>
-                    <div className="flex gap-10">
-                        <di>
-                            <img src={url+product.image} className="product-image m-8" alt="BigCo Inc. logo"/>
 
-                        </di>
+           <div className="flex gap-10">
+                <div className="">
+                    {/* <img src={url+product.image} className="product-image m-8" alt="BigCo Inc. logo"/> */}
+                   
+                    <ImageZoom src={url+product.image} alt="A image to apply the ImageZoom plugin" zoom="200"/>
 
-                        <div className="mt-10">
-                        <h1 className="card-title">Title: {product.title}</h1>
-                        <h4 className="card-title">Price: {product.price}</h4>
-                        <h4 className="card-title">Category: {product.category.name}</h4>
-                            <button onClick={()=>addtocart(product.id)} className="mt-5 w-full bg-indigo-700  text-center text-white py-2 px-12 rounded-lg">Add to cart</button>
-                        </div>
-                    </div>
-                    <div>
-                    <p className="text-black">{product.description}</p>
-                    </div>
-                 </tr>
-             )}
+                </div>
 
+                <div className="lg:mt-10">
+                        <h1 className="card-title text-2xl py-5">{product.title}</h1>
 
+                        <h4 className="price text-2xl">Price: {product.price}</h4>
+
+                        <h4 className="price text-lg mt-5">Stock: Available</h4>
+                        
+                        <h4 className="text-lg py-5">Category: {product.category.name}</h4>
+                        
+                        <button onClick={() => dispatch(ADD_TO_CART(product))} className="mt-5 w-full bg-indigo-700  text-center text-white py-2 px-12 rounded-lg">Add to cart</button>
+                 </div>
+            </div>
+
+            <div className="content text-black bg-white p-6">
+                <p className="description" dangerouslySetInnerHTML={{__html: product.description}}/>
+            </div>
 
          </div>
+         </Fade>
     );
 }
 

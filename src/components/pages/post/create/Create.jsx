@@ -84,7 +84,7 @@ class create extends Component {
                         <div className="form-group mb-3">
                             <label className="block text-gray-800 font-bold mb-3">Category</label>
                            
-                            <select  onChange={this.handleChange} name="category_id" value={this.state.category_id} className="w-full p-2 text-sm border border-gray-300 form-select block" id="category_id">
+                            <select  onChange={this.handleChange} name="category_id" value={this.state.category_id} className="" id="category_id">
 
                             <option value="" selected>Select category</option>
 

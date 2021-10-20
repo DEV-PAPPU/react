@@ -8,7 +8,6 @@ const Redex = () => {
     const dispatch = useDispatch();
     const mystate = useSelector((state) => state.changeNumber);
     const single_data = useSelector((state) => state.PRODUCT_SINGLE);
-    const test = "hello";
     return (
 
         <div className="product-component container px-20 py-10">

@@ -2,3 +2,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.t-head-title{
+    @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+  }
+
+.form-action-btn{
+    @apply bg-indigo-700 text-center text-sm text-white py-1 px-2 rounded-lg;
+  }

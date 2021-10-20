@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import ProductCart from '../../Common/Product_Cart';
+import ProductCart from './Common/Product_Cart';
 import axios from 'axios';
-import Fade from 'react-reveal/Bounce';
 
-const Product_page = () =>{
+const Test = () =>{
 
     const [loading, setLoading] = useState(true);
     const [products, setProduct] = useState([]);
@@ -27,7 +26,6 @@ const Product_page = () =>{
     
     return(
         <>
-         <Fade bottom cascade>
         <div className="mt-5 lg:px-20 px-10 py-10 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-6">
             {products.map( product =>
                  <div id={product.id} key={product.id}>
@@ -35,8 +33,7 @@ const Product_page = () =>{
                  </div>
              )}
         </div>
-        </Fade>
         </>
     )
 }
-export default Product_page;
+export default Test;

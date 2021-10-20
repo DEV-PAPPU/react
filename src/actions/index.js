@@ -19,3 +19,12 @@ export const SET_PRODUCT = (product) =>{
         }
     }
 }
+
+export const ADD_CART = (product) =>{
+    return{
+        type: "ADD_CART",
+        payload:{
+            product:product
+        }
+    }
+}
